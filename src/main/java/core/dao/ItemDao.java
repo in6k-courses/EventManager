@@ -9,5 +9,12 @@ import java.util.List;
  */
 public interface ItemDao {
 
+    List<Item> getItems();
+
+    void createItem(Item item);
+
+    Item getItem (Integer itemId);
+
+    void deleteItem(Item item);
 
 }

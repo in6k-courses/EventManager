@@ -9,5 +9,19 @@ import java.util.List;
  */
 public class ItemDaoImpl implements ItemDao {
 
+    public List<Item> getItems() {
+        return null;
+    }
 
+    public void createItem(Item item) {
+
+    }
+
+    public Item getItem(Integer itemId) {
+        return null;
+    }
+
+    public void deleteItem(Item item) {
+
+    }
 }
