@@ -127,6 +127,11 @@
             <artifactId>webapp-runner</artifactId>
             <version>8.0.30.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-dbcp</artifactId>
+            <version>7.0.47</version>
+        </dependency>
     </dependencies>
     <!-- Jackson JSON Mapper -->
 
