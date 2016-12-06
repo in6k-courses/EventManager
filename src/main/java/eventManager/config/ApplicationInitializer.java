@@ -1,4 +1,4 @@
-package listOfItems.config;
+package eventManager.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.WebApplicationInitializer;
@@ -17,7 +17,7 @@ import javax.servlet.ServletRegistration;
 
     @Configuration
     public class ApplicationInitializer implements WebApplicationInitializer {
-        private static final String CONFIG_LOCATION = "/listOfItems/config/";
+        private static final String CONFIG_LOCATION = "/eventManager/config/";
         private static final String MAPPING_URL = "/";
 
         @Override

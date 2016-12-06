@@ -1,4 +1,4 @@
-package listOfItems.config;
+package eventManager.config;
 
 import org.apache.tomcat.dbcp.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
@@ -23,7 +23,7 @@ import java.util.Properties;
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement
-@ComponentScan({"listOfItems"})
+@ComponentScan({"eventManager"})
 @Import({ApplicationInitializer.class})
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
@@ -60,7 +60,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     public SessionFactory sessionFactory() {
         LocalSessionFactoryBuilder builder =
                 new LocalSessionFactoryBuilder(dataSource());
-        builder.scanPackages("listOfItems.core.model")
+        builder.scanPackages("eventManager.core.event.model", "eventManager.core.topic.model")
                 .addProperties(getHibernateProperties());
 
         return builder.buildSessionFactory();
