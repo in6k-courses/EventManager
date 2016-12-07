@@ -38,11 +38,11 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         configurer.enable();
     }
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**")
-                .addResourceLocations("/resources/");
-    }
+//    @Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//        registry.addResourceHandler("/resources/**")
+//                .addResourceLocations("/resources/");
+//    }
 
     @Bean(name = "dataSource")
     public BasicDataSource dataSource() {
@@ -67,8 +67,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource());
-        sessionFactoryBean.setPackagesToScan("core");
-        sessionFactoryBean.setPackagesToScan("eventManager.core.event.model", "eventManager.core.topic.model");
+        sessionFactoryBean.setPackagesToScan("eventManager.core");
         sessionFactoryBean.setHibernateProperties(getHibernateProperties());
 
         return sessionFactoryBean;
