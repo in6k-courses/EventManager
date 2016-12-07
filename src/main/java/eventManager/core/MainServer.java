@@ -23,6 +23,7 @@ public class MainServer {
         tomcat.setBaseDir(tempPath.toString());
 
         tomcat.setPort(8081);
+//        tomcat.setPort(Integer.valueOf(System.getenv("PORT")));
 
         File webContentFolder = new File("src/main/webapp/");
         StandardContext ctx = (StandardContext) tomcat.addWebapp("", webContentFolder.getAbsolutePath());
