@@ -7,12 +7,18 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.accept.ContentNegotiationManager;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -23,8 +29,7 @@ import java.util.Properties;
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement
-@ComponentScan({"eventManager"})
-@Import({ApplicationInitializer.class})
+@ComponentScan(basePackages = "eventManager.*")
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     @Override
@@ -44,31 +49,33 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
         BasicDataSource ds = new BasicDataSource();
         ds.setDriverClassName("com.mysql.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://localhost:3306/event_manager");
+        ds.setUrl("jdbc:mysql://127.0.0.1:3306/event_manager?useSSL=false");
         ds.setUsername("root");
         ds.setPassword("root");
         return ds;
     }
 
-
-    @Bean(name = "transactionManager")
-    public HibernateTransactionManager txManager() {
-        return new HibernateTransactionManager(sessionFactory());
+    @Bean
+    public HibernateTransactionManager transactionManager() {
+        HibernateTransactionManager transactionManager =
+                new HibernateTransactionManager();
+        transactionManager.setSessionFactory(sessionFactory().getObject());
+        return transactionManager;
     }
 
     @Bean
-    public SessionFactory sessionFactory() {
-        LocalSessionFactoryBuilder builder =
-                new LocalSessionFactoryBuilder(dataSource());
-        builder.scanPackages("eventManager.core.event.model", "eventManager.core.topic.model")
-                .addProperties(getHibernateProperties());
+    public LocalSessionFactoryBean sessionFactory() {
+        LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
+        sessionFactoryBean.setDataSource(dataSource());
+        sessionFactoryBean.setPackagesToScan("core");
+        sessionFactoryBean.setPackagesToScan("eventManager.core.event.model", "eventManager.core.topic.model");
+        sessionFactoryBean.setHibernateProperties(getHibernateProperties());
 
-        return builder.buildSessionFactory();
+        return sessionFactoryBean;
     }
 
     private Properties getHibernateProperties() {
         Properties prop = new Properties();
-        prop.put("current_session_context_class", "thread");
         prop.put("hibernate.hbm2ddl.auto", "update");
         prop.put("hibernate.format_sql", "true");
         prop.put("hibernate.show_sql", "true");
@@ -85,5 +92,26 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         viewResolver.setPrefix("/WEB-INF/jsp/");
         viewResolver.setSuffix(".jsp");
         return viewResolver;
+    }
+
+
+    public class AppConfig extends WebMvcConfigurerAdapter {
+
+        @Bean
+        public ViewResolver contentNegotiatingViewResolver(ContentNegotiationManager manager) {
+            ContentNegotiatingViewResolver resolver = new ContentNegotiatingViewResolver();
+            resolver.setContentNegotiationManager(manager);
+            List<ViewResolver> resolvers = new ArrayList<ViewResolver>();
+            resolvers.add(jsonViewResolver());
+            resolver.setViewResolvers(resolvers);
+
+            return resolver;
+        }
+
+
+        @Bean
+        public ViewResolver jsonViewResolver() {
+            return new JsonViewResolver();
+        }
     }
 }
