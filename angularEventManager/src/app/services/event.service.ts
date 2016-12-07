@@ -6,7 +6,7 @@ import {Event} from "../models/event";
 @Injectable()
 export class EventService {
   url:string = 'http://localhost:8081/event';
-  // private headers = new Headers({'Content-Type': 'application/json'});
+  private headers = new Headers({'Content-Type': 'application/json'});
   constructor(private http: Http) {
   }
   getHeader() : any {
@@ -21,7 +21,7 @@ export class EventService {
   getEvents(): Promise<Event[]> {
     alert("Hello from event");
 
-    return this.http.get('event')
+    return this.http.get('/event')
       .toPromise()
       .then(response => response.json() as Event[])
       .catch(this.handleError);

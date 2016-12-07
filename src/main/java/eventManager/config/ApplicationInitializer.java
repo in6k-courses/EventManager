@@ -1,9 +1,7 @@
 package eventManager.config;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
-import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
@@ -11,27 +9,19 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
-/**
- * Created by employee on 12/6/16.
- */
 
-    @Configuration
-    public class ApplicationInitializer implements WebApplicationInitializer {
-        private static final String CONFIG_LOCATION = "/eventManager/config/";
-        private static final String MAPPING_URL = "/";
+public class ApplicationInitializer implements WebApplicationInitializer {
+    @Override
+    public void onStartup(ServletContext servletContext) throws ServletException {
 
-        @Override
-        public void onStartup(ServletContext servletContext) throws ServletException {
-            WebApplicationContext context = getContext();
-            servletContext.addListener(new ContextLoaderListener(context));
-            ServletRegistration.Dynamic dispatcher = servletContext.addServlet("DispatcherServlet", new DispatcherServlet(context));
-            dispatcher.setLoadOnStartup(1);
-            dispatcher.addMapping(MAPPING_URL);
-        }
+        AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
+        context.register(eventManager.config.AppConfig.class);
+        servletContext.addListener(new ContextLoaderListener(context));
 
-        private AnnotationConfigWebApplicationContext getContext() {
-            AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-            context.setConfigLocation(CONFIG_LOCATION);
-            return context;
-        }
+        context.setServletContext(servletContext);
+
+        ServletRegistration.Dynamic servlet = servletContext.addServlet("dispatcher_servlet",new DispatcherServlet(context));
+        servlet.addMapping("/");
+        servlet.setLoadOnStartup(1);
     }
+}

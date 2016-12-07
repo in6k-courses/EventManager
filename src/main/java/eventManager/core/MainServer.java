@@ -22,7 +22,7 @@ public class MainServer {
         Path tempPath = Files.createTempDirectory("tomcat-base-dir");
         tomcat.setBaseDir(tempPath.toString());
 
-        tomcat.setPort(8081);
+        tomcat.setPort(Integer.valueOf("8081"));
 //        tomcat.setPort(Integer.valueOf(System.getenv("PORT")));
 
         File webContentFolder = new File("src/main/webapp/");
