@@ -8,13 +8,10 @@ import java.util.List;
  * Created by employee on 12/6/16.
  */
 public interface TopicDao {
+    public List<Topic> getAll();
 
-    List<Topic> getItems();
+    public void create(Topic topic);
 
-    void createItem(Topic event);
-
-    Topic getItem(Integer itemId);
-
-    void deleteItem(Topic event);
+    public void delete(Topic topic);
 
 }

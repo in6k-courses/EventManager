@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ListOfItems.iml" filepath="$PROJECT_DIR$/ListOfItems.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Marina.iml" filepath="$PROJECT_DIR$/Marina.iml" />
+      <module fileurl="file://$PROJECT_DIR$/client/client.iml" filepath="$PROJECT_DIR$/client/client.iml" />
     </modules>
   </component>
 </project>

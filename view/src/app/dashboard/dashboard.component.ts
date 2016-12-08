@@ -6,22 +6,18 @@ import {EventService} from '../services/event.service';
 @Component({
 moduleId: module.id.toString(),
   selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html.html',
-  styleUrls: ['/dashboard.component.html.css'],
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['/dashboard.component.css'],
   providers: [EventService]
 })
 export class DashboardComponent implements OnInit{
   events: Event[];
+  constructor(private eventService : EventService){}
 
-  constructor(private eventService){}
 
   ngOnInit(){
-    this.getEvents();
-    alert(this.events)
-  }
-
-  getEvents(): void{
-    this.eventService.getEvents().then(events => this.events=events);
+    this.eventService.getEvents()
+      .then(events => this.events=events);
   }
 
 }

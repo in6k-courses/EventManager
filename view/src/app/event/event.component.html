@@ -1,0 +1,19 @@
+<h2>Events</h2>
+<ul>
+  <li *ngFor="let event of events"
+      [class.selected]="event === selectedEvent"
+      (click)="onSelect(event)">
+    <span class="badge">{{event.id}}</span> {{event.name}}
+    <button class="delete"
+            (click)="delete(event); $event.stopPropagation()">x</button>
+  </li>
+</ul>
+<div *ngIf="selectedEvent">
+  <!--<button (click)="getDetail()">Details</button>-->
+</div>
+<div>
+  Event:<input #eventName />
+  <button (click)="add(eventName.value); eventName.value=''">
+    Add
+  </button>
+</div>

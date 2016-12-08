@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import { Event } from './models/event';
 
 @Component({
+  moduleId: module.id.toString(),
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

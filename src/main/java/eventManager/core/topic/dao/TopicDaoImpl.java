@@ -1,27 +1,33 @@
 package eventManager.core.topic.dao;
 
-import eventManager.core.topic.model.Topic;
+import eventManager.core.event.model.Event;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 /**
- * Created by employee on 12/6/16.
+ * Created by Denys on 08.12.2016.
  */
-public class TopicDaoImpl implements TopicDao {
+public class TopicDaoImpl {
+    @Autowired
+    SessionFactory sessionFactory;
 
-    public List<Topic> getItems() {
-        return null;
+    public List<Event> getAll() {
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Event.class);
+        List<Event> result = criteria.list();
+        return  result;
     }
 
-    public void createItem(Topic event) {
-
+    public void create(Event event) {
+        sessionFactory.getCurrentSession().save(event);
     }
 
-    public Topic getItem(Integer itemId) {
-        return null;
-    }
-
-    public void deleteItem(Topic event) {
-
+    public void delete(Event event) {
+        Session session =sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Event.class);
+        session.delete(event);
     }
 }

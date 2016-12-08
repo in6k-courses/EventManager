@@ -35,7 +35,6 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         return resolver;
     }
 
-
     @Bean
     public ViewResolver jsonViewResolver() {
         return new JsonViewResolver();

@@ -1,11 +1,11 @@
 package eventManager.config;
 
 
-import org.springframework.web.servlet.View;
-import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
+        import org.springframework.web.servlet.View;
+        import org.springframework.web.servlet.ViewResolver;
+        import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
-import java.util.Locale;
+        import java.util.Locale;
 
 
 public class JsonViewResolver implements ViewResolver {

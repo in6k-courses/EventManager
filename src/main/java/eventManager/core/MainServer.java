@@ -25,7 +25,7 @@ public class MainServer {
         tomcat.setPort(Integer.valueOf("8081"));
 //        tomcat.setPort(Integer.valueOf(System.getenv("PORT")));
 
-        File webContentFolder = new File("src/main/webapp/");
+        File webContentFolder = new File("src/main/webapp");
         StandardContext ctx = (StandardContext) tomcat.addWebapp("", webContentFolder.getAbsolutePath());
         ctx.setParentClassLoader(Main.class.getClassLoader());
 

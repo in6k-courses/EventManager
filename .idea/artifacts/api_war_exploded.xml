@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="ListOfItems:war exploded">
-    <output-path>$PROJECT_DIR$/target/Marina-1.0-SNAPSHOT</output-path>
+  <artifact type="exploded-war" name="api:war exploded">
+    <output-path>$PROJECT_DIR$/api/target/Marina-1.0-SNAPSHOT</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="ListOfItems" />
+          <element id="module-output" name="api" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework:spring-core:4.3.3.RELEASE" />
@@ -82,9 +82,9 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/api/api/target/Marina-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/api/target/Marina-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="ListOfItems/web/Web" />
+      <element id="javaee-facet-resources" facet="api/web/Web" />
     </root>
   </artifact>
 </component>

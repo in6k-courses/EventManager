@@ -3,38 +3,50 @@ package eventManager.core.topic.model;
 import eventManager.core.event.model.Event;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by employee on 12/6/16.
  */
 @Entity
-@Table(name = "topic", catalog = "event_manager", uniqueConstraints = {
-        @UniqueConstraint(columnNames = "id")
-})
+@Table(name = "topic", catalog = "event_manager")
 
 public class Topic {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     @Column(name = "name")
-    String name;
+    private String name;
 
-    @Column(name = "id_event")
-    Integer idEvent;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "topics")
+    private List<Event> allEvents;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_event", insertable = false, updatable = false)
-    Event event;
+    public Topic(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Topic(String name) {
+        this.name = name;
+    }
 
     public Topic(){}
 
-    public Topic(Integer id){}
+    public void setId(int listId) {
+        this.id = listId;
+    }
 
-    public Topic(Integer id, String name){}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public Integer getId() {
+    public void setAllEvents(List<Event> allEvents) {
+        this.allEvents = allEvents;
+    }
+
+    public int getId() {
         return id;
     }
 
@@ -42,11 +54,7 @@ public class Topic {
         return name;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public List<Event> getAllEvents() {
+        return allEvents;
     }
 }

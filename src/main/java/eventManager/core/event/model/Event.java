@@ -3,7 +3,6 @@ package eventManager.core.event.model;
 import eventManager.core.topic.model.Topic;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Created by employee on 12/6/16.
@@ -20,8 +19,12 @@ public class Event {
     @Column(name = "name")
     String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "event")
-    List<Topic> allTopics;
+    @Column(name = "id_topic")
+    Integer idTopic;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_topic", insertable = false, updatable = false)
+    Topic topics;
 
     public Event(){}
 
@@ -46,7 +49,12 @@ public class Event {
         this.name = name;
     }
 
-    public List<Topic> getAllTopics() {
-        return allTopics;
+    public Integer getIdTopic() {
+        return idTopic;
     }
+
+    public void setIdTopic(Integer idTopic) {
+        this.idTopic = idTopic;
+    }
+
 }
