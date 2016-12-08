@@ -8,7 +8,6 @@ import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.EmptyResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
 import org.apache.tomcat.util.descriptor.web.ErrorPage;
-import org.eclipse.jdt.internal.compiler.batch.Main;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -22,12 +21,11 @@ public class MainServer {
         Path tempPath = Files.createTempDirectory("tomcat-base-dir");
         tomcat.setBaseDir(tempPath.toString());
 
-        tomcat.setPort(Integer.valueOf("8081"));
-//        tomcat.setPort(Integer.valueOf(System.getenv("PORT")));
+        tomcat.setPort(8080);
 
-        File webContentFolder = new File("src/main/webapp");
+        File webContentFolder = new File("src/main/webapp/");
         StandardContext ctx = (StandardContext) tomcat.addWebapp("", webContentFolder.getAbsolutePath());
-        ctx.setParentClassLoader(Main.class.getClassLoader());
+        ctx.setParentClassLoader(MainServer.class.getClassLoader());
 
         ErrorPage page = new ErrorPage();
         page.setErrorCode(404);

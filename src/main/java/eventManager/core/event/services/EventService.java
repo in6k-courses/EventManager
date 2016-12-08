@@ -13,5 +13,7 @@ public interface EventService {
 
     void createEvent(Event event);
 
-    void deleteEvent(Event event);
+    void delete(Event event);
+
+//    public Event getById(Integer id);
 }

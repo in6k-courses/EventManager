@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Created by Denys on 08.12.2016.
  */
 @Controller
-@RequestMapping
+@RequestMapping(value = "/")
 public class MainController {
 
-    @RequestMapping(value = "/")
-    public String index(){
-        return "index";
+    public String index() {
+        return "/api/event";
     }
 }

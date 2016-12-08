@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+import static org.hibernate.criterion.Restrictions.eq;
+
 /**
  * Created by employee on 12/6/16.
  */
@@ -32,4 +34,13 @@ public class EventDaoImpl implements EventDao {
         Criteria criteria = session.createCriteria(Event.class);
         session.delete(event);
     }
+
+//    @Override
+//    public Event getEventById(Integer id) {
+//        Event event = (Event) sessionFactory.getCurrentSession()
+//                .createCriteria(Event.class)
+//                .add(eq("id", id))
+//                .uniqueResult();
+//        return event;
+//    }
 }

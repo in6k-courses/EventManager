@@ -30,7 +30,11 @@ public class EventServiceImpl implements EventService{
     }
 
     @Override
-    public void deleteEvent(Event event) {
+    public void delete(Event event) {
         eventDao.delete(event);
     }
+
+//    public Event getById(Integer id) {
+//        return eventDao.getEventById(id);
+//    }
 }

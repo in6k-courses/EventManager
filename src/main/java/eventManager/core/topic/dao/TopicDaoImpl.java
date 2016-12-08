@@ -1,6 +1,7 @@
 package eventManager.core.topic.dao;
 
 import eventManager.core.event.model.Event;
+import eventManager.core.topic.model.Topic;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,23 +12,22 @@ import java.util.List;
 /**
  * Created by Denys on 08.12.2016.
  */
-public class TopicDaoImpl {
+public class TopicDaoImpl implements TopicDao{
     @Autowired
     SessionFactory sessionFactory;
 
-    public List<Event> getAll() {
-        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Event.class);
-        List<Event> result = criteria.list();
-        return  result;
+    @Override
+    public List<Topic> getAll() {
+        return null;
     }
 
-    public void create(Event event) {
-        sessionFactory.getCurrentSession().save(event);
+    @Override
+    public void create(Topic topic) {
+
     }
 
-    public void delete(Event event) {
-        Session session =sessionFactory.getCurrentSession();
-        Criteria criteria = session.createCriteria(Event.class);
-        session.delete(event);
+    @Override
+    public void delete(Topic topic) {
+
     }
 }

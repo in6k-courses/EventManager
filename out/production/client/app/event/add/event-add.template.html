@@ -1,0 +1,24 @@
+<!--<h3>Add an event</h3>-->
+
+<!--<form #eventForm="ngForm" (submit)="addEvent()">-->
+  <!--<div class="form-group">-->
+    <!--<label for="event-name">Name</label>-->
+    <!--<input type="text" id="event-name" name="event-name" #name="ngModel"-->
+           <!--[(ngModel)]="eventToAdd.name" pattern="[A-Za-z]+" required />-->
+
+    <!--<span [hidden]="!name.dirty || (name.valid && name.dirty)"-->
+          <!--class="error-message">-->
+            <!--Invalid name-->
+        <!--</span>-->
+  <!--</div>-->
+  <!--<div class="form-group">-->
+    <!--<label for="event-topic">Topic</label>-->
+    <!--<select id="event-topic" name="event-topic"-->
+            <!--[(ngModel)]="eventToAdd.topic" required>-->
+      <!--<option *ngFor="let topic of topics"-->
+              <!--[ngValue]="topic">{{ topic.name }}</option>-->
+    <!--</select>-->
+  <!--</div>-->
+
+  <!--<button type="submit" [disabled]="!eventForm.valid">Add</button>-->
+<!--</form>-->

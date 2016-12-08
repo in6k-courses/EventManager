@@ -28,6 +28,10 @@ public class Event {
 
     public Event(){}
 
+    public Event(Integer id){
+        this.id = id;
+    }
+
     public Event(Integer id, String name){
         this.id=id;
         this.name=name;

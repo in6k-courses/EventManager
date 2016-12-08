@@ -15,4 +15,5 @@ public interface EventDao {
 
     void delete(Event event);
 
+//    Event getEventById(Integer id);
 }
