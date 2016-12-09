@@ -12,3 +12,29 @@ client:
   - ./client:/client
   links:
 - api
+
+
+#
+#db:
+#  build: ./db
+#  ports:
+#    - "3307:3306"
+#
+#api:
+#  build: ./API
+#  ports:
+#    - "8080:8080"
+#  volumes:
+#    - ./API:/api
+#  command: /bin/sh /api/start.sh
+#  links:
+#    - db
+#
+#client:
+#  build: ./client
+#  ports:
+#    - "44200:4200"
+#  volumes:
+#    - ./client:/client
+#  links:
+#- api

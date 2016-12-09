@@ -1,15 +1,22 @@
-import { Component } from '@angular/core';
-
-import { EventsServiceInterface } from './event-interface.service';
-import {EventsHttpService } from './event.http.service';
+import {Component, OnInit} from "@angular/core";
+import {EventListComponent} from "./event-list.component";
+import {EventService} from "../service/event-service.component";
+import {Event} from "./event";
 
 @Component({
-  moduleId: module.id,
-  selector: 'event',
-  templateUrl: './event.template.html',
-  styleUrls: ['./event.style.css'],
-  providers: [
-    { provide: EventsServiceInterface, useClass: EventsHttpService }
-  ]
+  moduleId: module.id.toString(),
+  selector: 'events',
+  templateUrl: './events.component.html',
+  providers: [EventService]
 })
-export class EventsComponent { }
+
+export class EventsComponent {
+
+  events: Event[];
+
+  constructor(private service: EventService){}
+
+  getAllEvents():void{
+    this.service.getAllEvents().then(events => this.events = events);
+  }
+}

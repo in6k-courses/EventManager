@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-1 col-md-4">
+      <h4>
+        <div *ngIf="events.length > 0">
+          <div id="events">
+            <div class="events item underline" *ngFor="let event of events">
+              {{event}}
+               <button class="glyphicon glyphicon-remove-circle" (click)="deleteEvent(titleInput.value)">
+            </button>
+            </div>
+          </div>
+        </div>
+      </h4>
+    </div>
+    <br>
+  </div>
+</div>
