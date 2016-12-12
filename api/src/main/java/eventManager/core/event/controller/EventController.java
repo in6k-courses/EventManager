@@ -16,7 +16,6 @@ import java.util.List;
 @RequestMapping("/api/events")
 public class EventController {
 
-
     @Autowired
     private EventDao eventDao;
 
