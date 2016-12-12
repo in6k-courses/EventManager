@@ -1,12 +1,13 @@
 import {Component, OnInit} from "@angular/core";
-import {EventListComponent} from "./event-list.component";
+import {EventDetailsComponent} from "./event-details/event-details.component";
 import {EventService} from "../service/event-service.component";
-import {Event} from "./event";
+import {Event} from "./model/event";
 
 @Component({
   moduleId: module.id.toString(),
   selector: 'events',
   templateUrl: './events.component.html',
+  styleUrls: ['./events.component.css'],
   providers: [EventService]
 })
 

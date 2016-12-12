@@ -1,13 +1,13 @@
 import  {Component, Input} from '@angular/core';
-import {Event} from "./event";
+import {Event} from "../model/event";
 
 @Component({
   selector: 'event-list',
-  templateUrl: './event-list.component.html'
+  templateUrl: 'event-details.component.html'
   // inputs: ['events']
 })
 
-export class EventListComponent {
+export class EventDetailsComponent {
   @Input() events: Event[];
 
 }

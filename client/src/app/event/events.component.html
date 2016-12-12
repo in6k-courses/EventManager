@@ -1,12 +1,20 @@
-<html>
-<head>
-</head>
-<body>
-<label> Events  </label>
-<button (click)="getAllEvents()">get</button>
-<div  *ngFor = "let event of events">
-  {{vent.name}}&nbsp;
-  &nbsp;{{event.id}}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-offset-0 col-sm-3">
+      <button (click)="getAllEvents()">get all</button>
+      <div  *ngFor = "let event of events">
+        <br>
+        <div class="events"> {{event.name}}
+          <div>
+            <br>
+            <label class=""><a [routerLink]="['api/events/details']"> Details</a></label>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+  <div class="row"></div>
 </div>
-</body>
-</html>

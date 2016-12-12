@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  name: string;
+
+  constructor(){
+    this.name = 'Event manager'
+  }
 }

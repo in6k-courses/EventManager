@@ -21,7 +21,7 @@ public class EventController {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
-    public String viewAllTopics() {
+    public String getAllEvents() {
         ObjectMapper mapper = new ObjectMapper();
         List<Event> topic = (List<Event>) eventDao.findAll();
         String jsonInString = null;

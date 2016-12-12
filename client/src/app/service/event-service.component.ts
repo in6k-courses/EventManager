@@ -2,12 +2,12 @@ import {Injectable} from '@angular/core';
 import  { Http, Headers, RequestOptions, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import {Event} from '../event/event'
+import {Event} from '../event/model/event'
 
 
 @Injectable()
 export class EventService {
-  private apiUrl = 'api/events';
+  private apiUrl = 'api/events/all';
 
   constructor(private http:Http){}
 
