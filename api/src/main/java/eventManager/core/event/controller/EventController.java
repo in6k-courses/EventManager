@@ -34,7 +34,8 @@ public class EventController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public Event addEvent(@RequestBody Event event){
+    public Event addEvent(@RequestBody String name){
+        Event event = new Event(name);
         return this.eventDao.save(event);
     }
 //

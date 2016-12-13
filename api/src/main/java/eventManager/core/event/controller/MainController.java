@@ -14,6 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class MainController {
 
     public String index() {
-        return "/api/event";
+        return "/api/events";
     }
 }
