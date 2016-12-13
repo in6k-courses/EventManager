@@ -19,5 +19,6 @@ client:
     - "44200:4200"
   volumes:
     - ./client:/client
+  command: /bin/sh /client/start.sh
   links:
-   - api
+    - api
