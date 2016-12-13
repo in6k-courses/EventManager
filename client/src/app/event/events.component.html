@@ -1,10 +1,9 @@
 <div class="container">
-  <event-form></event-form>
-  <br>
   <div class="row">
-    <div class="col-sm-offset-0 col-sm-3">
+    <div class= "cfset-0 col-sm-3">
       <button (click)="getAllEvents()">get all</button>
       <div  *ngFor = "let event of events">
+        <br>
         <br>
         <div class="events"> {{event.name}}
           <div>
@@ -12,10 +11,32 @@
             <label class=""><a [routerLink]="['api/events/details']"> Details</a></label>
           </div>
         </div>
-
       </div>
-
     </div>
   </div>
-  <div class="row"></div>
+
+  <!--<div class="row">-->
+  <!--<div class="col-sm-10 placeholder">-->
+  <!--<div class="col-sm-12 placeholder">-->
+  <!--<input class="input" type="text" name="name" placeholder="Enter event name"-->
+  <!--(keyup.enter)="create(nameInput.value);-->
+  <!--nameInput.value = ''" #nameInput>-->
+
+  <!--<button type="button" class="glyphicon glyphicon-plus-sign"-->
+  <!--(click)="create(nameInput.value); nameInput.value = ''">Add</button>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+
+  <div>
+    <label>eventName name:</label> <input #eventName />
+    <button (click)="addEvent(eventName.value); eventName.value=''">
+      Add
+    </button>
+  </div>
+  <div class="events">
+    <div *ngFor="let event of events">
+    <span>{{event.name}}</span>
+    </div>
+  </div>
 </div>

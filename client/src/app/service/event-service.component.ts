@@ -3,6 +3,7 @@ import  { Http, Headers, RequestOptions, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import {Event} from '../event/model/event'
+import {toPromise} from "rxjs/operator/toPromise";
 
 
 @Injectable()
@@ -19,12 +20,12 @@ export class EventService {
       .catch(this.handleError);
   }
 
-  addEvent(event: Event): Promise<Event>{
-    return this.post(event);
-  }
-
-  saveEvent(event: Event): Promise<Event>{
-    return this.put(event);
+  addEvent(name: string): Promise<Event>{
+    return this.http
+      .post(this.saveEventUrl, JSON.stringify({name: name}))
+      .toPromise()
+      .then(res => res.json().data)
+      .catch(this.handleError);
   }
 
   private post(event: Event): Promise<Event> {
@@ -49,7 +50,7 @@ export class EventService {
 
 
   private handleError(error: any): Promise<any> {
-    console.log('Error', error);
+    console.error('Error', error);
     return Promise.reject(error.message || error);
   }
 }

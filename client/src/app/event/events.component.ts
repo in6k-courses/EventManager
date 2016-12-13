@@ -7,8 +7,7 @@ import {Event} from "./model/event";
   moduleId: module.id.toString(),
   selector: 'events',
   templateUrl: './events.component.html',
-  styleUrls: ['./events.component.css'],
-  providers: [EventService]
+  styleUrls: ['./events.component.css']
 })
 
 export class EventsComponent {
@@ -18,22 +17,21 @@ export class EventsComponent {
   constructor(private service: EventService){}
 
   getAllEvents():void{
-    this.service.getAllEvents().then(events => this.events = events);
+    this.service
+      .getAllEvents()
+      .then(events => this.events = events);
   }
 
   // ngOnInit(){
   //   this.service.getAllEvents().then(events=>this.events=events);
   // }
 
-  onEventCreated(event: Event): void {
-    this.service.addEvent(event).then(event=>this.addEvent(event));
-  }
-
-  saveEvent(event: Event): void {
-    this.service.saveEvent(event).then(event=>{})
-  }
-
-  private addEvent(event: Event): void {
-    this.events.push(event);
+  private addEvent(name: string): void {
+   name = name.trim();
+   if (!name){return; }
+   this.service.addEvent(name)
+     .then(event => {
+       this.events.push(event);
+     });
   }
 }
