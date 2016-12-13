@@ -9,6 +9,7 @@ import {AppRoutingModule} from "./routing";
 import {EventService} from "./service/event-service.component";
 import {TopicComponent} from "./topic/topic.component";
 import {EventSearchComponent} from "./event/event-search/event-search.component";
+import {EventDetailsComponent} from "./event/event-details/event-details.component";
 
 
 
@@ -16,8 +17,8 @@ import {EventSearchComponent} from "./event/event-search/event-search.component"
   declarations: [
     AppComponent,
     EventsComponent,
-    TopicComponent
-    // EventFormComponent,
+    TopicComponent,
+    EventDetailsComponent
     // EventSearchComponent
   ],
   imports: [

@@ -26,6 +26,9 @@ public class Event {
     @JoinColumn(name = "id_topic", insertable = false, updatable = false)
     Topic topics;
 
+    @Column(name="details")
+    String details;
+
     public Event(){}
 
     public Event(Integer id){
@@ -65,4 +68,11 @@ public class Event {
         this.idTopic = idTopic;
     }
 
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
 }

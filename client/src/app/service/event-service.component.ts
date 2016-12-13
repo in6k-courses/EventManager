@@ -9,7 +9,8 @@ import {toPromise} from "rxjs/operator/toPromise";
 @Injectable()
 export class EventService {
   private apiUrl = 'api/events/all';
-  private saveEventUrl = 'api/events/create'
+  private savedEventUrl = 'api/events/create';
+  private detailsUrl = 'api/events/details';
 
   constructor(private http:Http){}
 
@@ -17,37 +18,23 @@ export class EventService {
     return this.http.get(this.apiUrl)
       .toPromise()
       .then(response=>response.json() as Event[])
-      .catch(this.handleError);
   }
 
   addEvent(name: string): Promise<Event>{
     return this.http
-      .post(this.saveEventUrl, JSON.stringify({name: name}))
+      .post(this.savedEventUrl, JSON.stringify({name: name}))
       .toPromise()
-      .then(res => res.json().data)
+      .then(res => res.json())
       .catch(this.handleError);
   }
 
-  private post(event: Event): Promise<Event> {
-    let body = JSON.stringify(event);
-
-    return this.http.post(this.saveEventUrl, body)
+  getEvent(id: number): Promise<Event>{
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get(url)
       .toPromise()
-      .then(res => res.json().data)
-      .catch(this.handleError)
-  }
-
-  private put(event: Event): Promise<Event> {
-    let body = JSON.stringify(event);
-
-    let url = `${this.saveEventUrl}/${event.id}`;
-
-    return this.http.put(url, body)
-      .toPromise()
-      .then(res => event)
+      .then(response => response.json() as Event)
       .catch(this.handleError);
   }
-
 
   private handleError(error: any): Promise<any> {
     console.error('Error', error);

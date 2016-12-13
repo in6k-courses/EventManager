@@ -1,14 +1,15 @@
 <div class="container">
-  <div class="row">
+  <div class="rowinline">
     <div class= "cfset-0 col-sm-3">
-      <button (click)="getAllEvents()">get all</button>
+      <button (click)="getAllEvents()">Get all</button>
       <div  *ngFor = "let event of events">
         <br>
         <br>
         <div class="events"> {{event.name}}
           <div>
             <br>
-            <label class=""><a [routerLink]="['api/events/details']"> Details</a></label>
+            <a [routerLink] = "['event-details']" >Details</a>
+            <!--<label class=""><button (click)="gotoDetails()"> View details</button></label>-->
           </div>
         </div>
       </div>
@@ -29,14 +30,15 @@
   <!--</div>-->
 
   <div>
-    <label>eventName name:</label> <input #eventName />
-    <button (click)="addEvent(eventName.value); eventName.value=''">
+    <label>Event name:</label>
+    <input  class="input" type="text" name="name" placeholder="Enter event name" #nameInput>
+            <!--(keyup.enter)="create(nameInput.value);-->
+  <!--nameInput.value = ''"-->
+
+    <button type="button" class="glyphicon glyphicon-plus-sign"
+            (click)="addEvent(nameInput.value); nameInput.value=''">
       Add
     </button>
   </div>
-  <div class="events">
-    <div *ngFor="let event of events">
-    <span>{{event.name}}</span>
-    </div>
-  </div>
+
 </div>

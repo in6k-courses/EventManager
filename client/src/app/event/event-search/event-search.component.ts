@@ -23,19 +23,19 @@ export class EventSearchComponent implements OnInit{
   ){}
 
   search(term: string): void {
-      this.searchTerms.next(term);
+    this.searchTerms.next(term);
   }
 
   ngOnInit(): void {
-      this.events = this.searchTerms
-        .debounceTime(300)
-        .distinctUntilChanged()
-        .switchMap(term=>term
+    this.events = this.searchTerms
+      .debounceTime(300)
+      .distinctUntilChanged()
+      .switchMap(term=>term
         ?this.eventSearchService.search(term)
-          :Observable.of<Event[]>([]))
-        .catch(error=> {
-          console.log(error);
-          return Observable.of<Event[]>([]);
-        });
+        :Observable.of<Event[]>([]))
+      .catch(error=> {
+        console.log(error);
+        return Observable.of<Event[]>([]);
+      });
   }
 }

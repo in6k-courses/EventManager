@@ -23,10 +23,10 @@ public class EventController {
     @ResponseBody
     public String getAllEvents() {
         ObjectMapper mapper = new ObjectMapper();
-        List<Event> topic = (List<Event>) eventDao.findAll();
+        List<Event> events = (List<Event>) eventDao.findAll();
         String jsonInString = null;
         try {
-            jsonInString = mapper.writeValueAsString(topic);
+            jsonInString = mapper.writeValueAsString(events);
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -37,6 +37,20 @@ public class EventController {
     public Event addEvent(@RequestBody String name){
         Event event = new Event(name);
         return this.eventDao.save(event);
+    }
+
+    @RequestMapping(value = "/details", method = RequestMethod.GET)
+    public String getDetails(){
+        ObjectMapper mapper = new ObjectMapper();
+        Event event = new Event();
+        event.setDetails("Event.");
+        String jsonInString = null;
+        try {
+            jsonInString = mapper.writeValueAsString(event.getDetails());
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return jsonInString;
     }
 //
 //    @RequestMapping(value = "/{id}")
