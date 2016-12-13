@@ -33,10 +33,10 @@ public class EventController {
         return jsonInString;
     }
 
-//    @RequestMapping(value = "/{id}")
-//    public void getEventById(@PathVariable Integer id){
-//        this.eventService.getById(id);
-//    }
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public Event addEvent(@RequestBody Event event){
+        return this.eventDao.save(event);
+    }
 //
 //    @RequestMapping(value = "/{id}")
 //    public void delete(@PathVariable Integer id){

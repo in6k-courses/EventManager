@@ -1,3 +1,9 @@
 .topics {
   padding: 6%;
 }
+* {
+  color: black;
+}
+a {
+  text-decoration: none;
+}

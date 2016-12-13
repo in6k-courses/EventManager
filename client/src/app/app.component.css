@@ -31,3 +31,9 @@
  .menu {
    padding-right: 12%;
  }
+* {
+  color: black;
+}
+a {
+  text-decoration: none;
+}

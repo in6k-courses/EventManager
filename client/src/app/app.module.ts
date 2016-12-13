@@ -8,13 +8,16 @@ import {EventsComponent} from './event/events.component'
 import {AppRoutingModule} from "./routing";
 import {EventService} from "./service/event-service.component";
 import {TopicComponent} from "./topic/topic.component";
+import {EventFormComponent} from "./event/event-form/event-form.component";
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     EventsComponent,
-    TopicComponent
+    TopicComponent,
+    EventFormComponent
   ],
   imports: [
     BrowserModule,

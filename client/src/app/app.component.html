@@ -14,10 +14,10 @@
     <div class="col-sm-10 placeholder">
       <div class="col-sm-12 placeholder">
         <input class="input" type="text" name="name" placeholder="Enter event name"
-               (keyup.enter)="addEvent(nameInput.value);
+               (keyup.enter)="searchEvent(nameInput.value);
         nameInput.value = ''" #nameInput>
         <button type="button" class="glyphicon glyphicon-plus-sign"
-                (click)="addEvent(nameInput.value)">Add</button>
+                (click)="searchEvent(nameInput.value)">Search</button>
       </div>
     </div>
 

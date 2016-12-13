@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-image: url("http://bgfons.com/upload/snow_texture1554.jpg");
+  /*background-image: url("http://best-photos.ru/albums/userpics/10014/snow1001.jpg");*/
+}
+* {
+  color: black;
+}
+a {
+  text-decoration: none;
+
+}
