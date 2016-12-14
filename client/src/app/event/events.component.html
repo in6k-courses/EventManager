@@ -1,44 +1,33 @@
-<div class="container">
-  <div class="rowinline">
-    <div class= "cfset-0 col-sm-3">
-      <button (click)="getAllEvents()">Get all</button>
-      <div  *ngFor = "let event of events">
-        <br>
-        <br>
-        <div class="events"> {{event.name}}
-          <div>
-            <br>
-            <a [routerLink] = "['event-details']" >Details</a>
-            <!--<label class=""><button (click)="gotoDetails()"> View details</button></label>-->
+<div class="col-sm-offset-4 ">
+  <label>Event name:</label>
+  <input  class="input" type="text" name="name" placeholder="Enter event name" #nameInput>
+  <!--(keyup.enter)="create(nameInput.value);-->
+  <!--nameInput.value = ''"-->
+
+  <button type="button" class="glyphicon glyphicon-plus-sign btn btn-primary"
+          (click)="addEvent(nameInput.value); nameInput.value=''">
+    Add
+  </button>
+</div>
+<br>
+<table class="table col-sm-offset-4">
+  <tbody>
+  <tr>
+    <div class="rowinline">
+      <div class= "cfset-0 col-sm-3">
+        <div  *ngFor = "let event of events">
+          <div class="list-group">
+            <div class="list-group-item">
+              <th scope="row">
+                {{event.name}}
+                </th>
+              <th><a [routerLink] = "['event-details']" style="background-color: #e3f2fd;">
+                Details</a></th>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <!--<div class="row">-->
-  <!--<div class="col-sm-10 placeholder">-->
-  <!--<div class="col-sm-12 placeholder">-->
-  <!--<input class="input" type="text" name="name" placeholder="Enter event name"-->
-  <!--(keyup.enter)="create(nameInput.value);-->
-  <!--nameInput.value = ''" #nameInput>-->
-
-  <!--<button type="button" class="glyphicon glyphicon-plus-sign"-->
-  <!--(click)="create(nameInput.value); nameInput.value = ''">Add</button>-->
-  <!--</div>-->
-  <!--</div>-->
-  <!--</div>-->
-
-  <div>
-    <label>Event name:</label>
-    <input  class="input" type="text" name="name" placeholder="Enter event name" #nameInput>
-            <!--(keyup.enter)="create(nameInput.value);-->
-  <!--nameInput.value = ''"-->
-
-    <button type="button" class="glyphicon glyphicon-plus-sign"
-            (click)="addEvent(nameInput.value); nameInput.value=''">
-      Add
-    </button>
-  </div>
-
-</div>
+  </tr>
+  </tbody>
+</table>

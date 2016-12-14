@@ -24,9 +24,9 @@ export class EventsComponent {
       .then(events => this.events = events);
   }
 
-  // ngOnInit(){
-  //   this.service.getAllEvents().then(events=>this.events=events);
-  // }
+  ngOnInit(){
+    this.service.getAllEvents().then(events=>this.events=events);
+  }
 
 
   private addEvent(name: string): void {

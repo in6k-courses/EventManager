@@ -1,9 +1,12 @@
-<H1>{{name}}</H1>
-<div class="container">
-  <div class="row">
-    <div *ngFor="let topic of topics"  class="col-sm-offset-4 col-sm-3">
-      <hr>
-      <h4><a href="">{{topic.id}}. {{topic.name}}</a></h4>
-    </div>
+
+<H2>{{name}}</H2>
+<div class="list-group">
+  <div *ngFor="let topic of topics"  class="col-sm-offset-4 col-sm-3">
+    <a href=""><h4>
+        <div class="list-group-item">
+          {{topic.id}}. {{topic.name}}
+        </div>
+    </h4>
+    </a>
   </div>
 </div>

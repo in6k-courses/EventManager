@@ -5,7 +5,7 @@ import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
   moduleId: module.id.toString(),
-  selector: 'event-details',
+  selector: 'details',
   templateUrl: 'event-details.component.html'
 })
 

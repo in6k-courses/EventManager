@@ -40,6 +40,7 @@ public class EventController {
     }
 
     @RequestMapping(value = "/details", method = RequestMethod.GET)
+    @ResponseBody
     public String getDetails(){
         ObjectMapper mapper = new ObjectMapper();
         Event event = new Event();
