@@ -1,15 +1,10 @@
-package eventManager.core.event.controller;
+package eventManager.event.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import eventManager.core.event.dao.EventDao;
-import eventManager.core.event.model.Event;
-import eventManager.core.topic.model.Topic;
+import eventManager.event.dao.EventDao;
+import eventManager.event.model.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * Created by employee on 12/6/16.
@@ -41,10 +36,10 @@ public class EventController {
         return event.getDetails();
     }
 
-    @RequestMapping(value = "/addTopicName", method = RequestMethod.POST)
-    public void addTopicName(@RequestBody Long idEvent, String topicName){
-        this.eventDao.findOne(idEvent).setDetails(topicName);
-    }
+//    @RequestMapping(value = "/getTopicName", method = RequestMethod.POST)
+//    public void addTopicName(@RequestBody Long idTopic){
+//        this.eventDao.findOne().setDetails();
+//    }
 
     @RequestMapping(value = "/{id}")
     public Event getById(@RequestBody Long id){

@@ -1,6 +1,6 @@
-package eventManager.core.event.model;
+package eventManager.event.model;
 
-import eventManager.core.topic.model.Topic;
+import eventManager.topic.model.Topic;
 
 import javax.persistence.*;
 

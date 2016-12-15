@@ -1,4 +1,4 @@
-package eventManager.core;
+package eventManager;
 
 /**
  * Created by employee on 12/9/16.

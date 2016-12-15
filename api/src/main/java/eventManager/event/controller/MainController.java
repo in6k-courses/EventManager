@@ -1,4 +1,4 @@
-package eventManager.core.event.controller;
+package eventManager.event.controller;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.stereotype.Controller;

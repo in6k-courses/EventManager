@@ -1,5 +1,5 @@
-package eventManager.core.event.dao;
-import eventManager.core.event.model.Event;
+package eventManager.event.dao;
+import eventManager.event.model.Event;
 
 import org.springframework.data.repository.CrudRepository;
 import javax.transaction.Transactional;
