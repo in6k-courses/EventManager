@@ -18,16 +18,18 @@
         <div  *ngFor = "let event of events">
           <div class="list-group">
             <div class="list-group-item">
-              <th scope="row">
+            <th scope="row">
+              <a (click)="goToDetails(event)">
                 {{event.name}}
-                </th>
-              <th><a [routerLink] = "['api/events/details']" style="background-color: #e3f2fd;">
-                Details</a></th>
+              </a>
+            </th>
+            <td>{{event.details}}</td>
             </div>
           </div>
         </div>
       </div>
     </div>
+
   </tr>
   </tbody>
 </table>

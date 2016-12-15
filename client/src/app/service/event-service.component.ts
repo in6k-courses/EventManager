@@ -21,28 +21,24 @@ export class EventService {
       .catch(this.handleError);
   }
 
-  addEvent(name: string): Promise<Event>{
+  addEvent(name: string, details: string, topicId: number): Promise<Event>{
     return this.http
-      .post(this.savedEventUrl, JSON.stringify({name: name}))
+      .post(this.savedEventUrl, JSON.stringify({name: name, details: details, topic: topicId}))
       .toPromise()
       .then(res => res.json())
       .catch(this.handleError);
   }
 
   getById(id: number): Promise<Event>{
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.get(url)
-      .toPromise()
-      .then(response => response.json() as Event)
-      .catch(this.handleError);
+    return this.getAllEvents()
+      .then(events=>events.find(event=>event.id===id));
   }
 
-  getDetails(name: string): Promise<Event>{
-    return this.http.get(this.detailsUrl)
+  deleteEvent(id: number): Promise<void>{
+    return this.http.delete(this.apiUrl+id)
       .toPromise()
-      .then(response=>response.json() as Event)
+      .then(()=>null)
       .catch(this.handleError);
-
   }
 
   private handleError(error: any): Promise<any> {

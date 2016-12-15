@@ -5,6 +5,7 @@ import eventManager.topic.model.Topic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -17,7 +18,7 @@ public class TopicController {
     @Autowired
     TopicDao topicDao;
 
-    @RequestMapping(value = "/all")
+    @RequestMapping(value = "", method = RequestMethod.GET)
     @ResponseBody
     public Iterable<Topic> getAllTopics(){
         return topicDao.findAll();

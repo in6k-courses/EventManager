@@ -3,6 +3,8 @@ package eventManager.event.model;
 import eventManager.topic.model.Topic;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by employee on 12/6/16.
@@ -19,12 +21,13 @@ public class Event {
     @Column(name = "name")
     String name;
 
-    @Column(name = "id_topic")
-    Integer idTopic;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_topic", insertable = false, updatable = false)
-    Topic topics;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinTable(name = "id_topic", catalog = "event_manager",
+            joinColumns = {
+                    @JoinColumn( name = "idEvent", referencedColumnName = "id")
+            },
+            inverseJoinColumns = {@JoinColumn(name = "idTopic", referencedColumnName = "id" )})
+    List<Topic> topics = new ArrayList<>();
 
     @Column(name="details")
     String details;
@@ -39,7 +42,7 @@ public class Event {
         this.name = name;
     }
 
-    public Event(Integer id, String name){
+    public Event(String name, String details){
         this.id=id;
         this.name=name;
     }
@@ -60,19 +63,19 @@ public class Event {
         this.name = name;
     }
 
-    public Integer getIdTopic() {
-        return idTopic;
-    }
-
-    public void setIdTopic(Integer idTopic) {
-        this.idTopic = idTopic;
-    }
-
     public String getDetails() {
         return details;
     }
 
     public void setDetails(String details) {
         this.details = details;
+    }
+
+    public List<Topic> getTopics() {
+        return this.topics;
+    }
+
+    public void setTopics(List<Topic> topics) {
+        this.topics = topics;
     }
 }

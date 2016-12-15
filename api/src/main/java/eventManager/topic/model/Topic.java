@@ -9,7 +9,10 @@ import java.util.List;
  * Created by employee on 12/6/16.
  */
 @Entity
-@Table(name = "topic", catalog = "event_manager")
+@Table(name = "topic", catalog = "event_manager",
+uniqueConstraints = {
+        @UniqueConstraint(columnNames = "id")
+})
 
 public class Topic {
     @Id
@@ -19,9 +22,6 @@ public class Topic {
 
     @Column(name = "name")
     private String name;
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "topics")
-    private List<Event> allEvents;
 
     public Topic(int id, String name) {
         this.id = id;
@@ -42,10 +42,6 @@ public class Topic {
         this.name = name;
     }
 
-    public void setAllEvents(List<Event> allEvents) {
-        this.allEvents = allEvents;
-    }
-
     public int getId() {
         return id;
     }
@@ -54,7 +50,4 @@ public class Topic {
         return name;
     }
 
-    public List<Event> getAllEvents() {
-        return allEvents;
-    }
 }

@@ -32,9 +32,9 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a routerLink ="api/events/all" routerLinkActive="active-link" > All events</a></li>
-        <li><a routerLink="topics" routerLinkActive="active-link"> All topics </a></li>
-        <li><a routerLink="/users" routerLinkActive="is-active"> Users</a></li>
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}"><a routerLink ="api/events/all" > All events</a></li>
+        <li [routerLinkActive]="['active']"><a routerLink="topics" > All topics </a></li>
+        <li [routerLinkActive]="['active']"><a routerLink="/users" > Users</a></li>
       </ul>
     </div>
     <br>

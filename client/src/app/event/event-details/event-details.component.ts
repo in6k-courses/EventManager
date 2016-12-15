@@ -1,22 +1,23 @@
+import 'rxjs/add/operator/switchMap';
 import  {Component, Input, OnInit} from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location }               from '@angular/common';
+
 import {Event} from "../model/event";
 import {EventService} from "../../service/event-service.component";
-import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
-  moduleId: module.id.toString(),
-  selector: 'details',
+  selector: 'event-details',
   templateUrl: 'event-details.component.html'
 })
 
-export class EventDetailsComponent
-implements OnInit{
+export class EventDetailsComponent {
   event: Event;
 
   constructor(
     private eventService: EventService,
-    private route: ActivatedRoute
-    // private location: Location
+    private route: ActivatedRoute,
+    private location: Location
   ){}
 
   ngOnInit(): void {
@@ -24,7 +25,12 @@ implements OnInit{
         .switchMap((params: Params) => this.eventService.getById(+params['id']))
         .subscribe(event => this.event = event);
   }
-  // goBack(): void {
-  //   this.location.replace('/');
+  // save(): void {
+  //   this.eventService.update(this.event)
+  //     .then(bookService => this.goBack());
   // }
+
+  goBack(): void {
+    this.location.back();
+  }
 }

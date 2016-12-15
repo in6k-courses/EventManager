@@ -1,11 +1,9 @@
 import {Component, OnInit, Input} from "@angular/core";
-import {EventDetailsComponent} from "./event-details/event-details.component";
 import {EventService} from "../service/event-service.component";
 import {Event} from "./model/event";
 import {Router} from "@angular/router";
 
 @Component({
-  moduleId: module.id.toString(),
   selector: 'events',
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.css']
@@ -14,6 +12,7 @@ import {Router} from "@angular/router";
 export class EventsComponent {
 
    events: Event[];
+   event: Event;
 
   constructor(private service: EventService,
   private router: Router){}
@@ -25,20 +24,28 @@ export class EventsComponent {
   }
 
   ngOnInit(){
-    this.service.getAllEvents().then(events=>this.events=events);
+    this.getAllEvents();
   }
 
 
-  private addEvent(name: string): void {
-   name = name.trim();
-   if (!name){return; }
-   this.service.addEvent(name)
-     .then(event => {
-       this.events.push(event);
-     });
+  // private addEvent(name: string): void {
+  //  name = name.trim();
+  //  if (!name){return; }
+  //  this.service.addEvent(name)
+  //    .then(event => {
+  //      this.events.push(event);
+  //    });
+  // }
+
+  delete(event:Event):void {
+    this.service
+      .deleteEvent(event.id)
+      .then(()=>{
+      this.events= this.events.filter(h => h !== event);
+      });
   }
 
-  gotoDetails(): void {
-    this.router.navigate([ 'event-details']);
+  goToDetails(event: Event): void {
+    this.router.navigate(['/events', event.id]);
   }
 }
