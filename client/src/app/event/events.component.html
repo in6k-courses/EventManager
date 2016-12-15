@@ -21,7 +21,7 @@
               <th scope="row">
                 {{event.name}}
                 </th>
-              <th><a [routerLink] = "['event-details']" style="background-color: #e3f2fd;">
+              <th><a [routerLink] = "['api/events/details']" style="background-color: #e3f2fd;">
                 Details</a></th>
             </div>
           </div>
@@ -31,3 +31,5 @@
   </tr>
   </tbody>
 </table>
+
+<router-outlet></router-outlet>

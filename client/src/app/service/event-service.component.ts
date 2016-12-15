@@ -18,6 +18,7 @@ export class EventService {
     return this.http.get(this.apiUrl)
       .toPromise()
       .then(response=>response.json() as Event[])
+      .catch(this.handleError);
   }
 
   addEvent(name: string): Promise<Event>{
@@ -28,12 +29,20 @@ export class EventService {
       .catch(this.handleError);
   }
 
-  getEvent(id: number): Promise<Event>{
+  getById(id: number): Promise<Event>{
     const url = `${this.apiUrl}/${id}`;
     return this.http.get(url)
       .toPromise()
       .then(response => response.json() as Event)
       .catch(this.handleError);
+  }
+
+  getDetails(name: string): Promise<Event>{
+    return this.http.get(this.detailsUrl)
+      .toPromise()
+      .then(response=>response.json() as Event)
+      .catch(this.handleError);
+
   }
 
   private handleError(error: any): Promise<any> {
