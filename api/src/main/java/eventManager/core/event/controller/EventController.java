@@ -5,6 +5,7 @@ import eventManager.core.event.dao.EventDao;
 import eventManager.core.event.model.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,18 +20,10 @@ public class EventController {
     @Autowired
     private EventDao eventDao;
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/all")
     @ResponseBody
-    public String getAllEvents() {
-        ObjectMapper mapper = new ObjectMapper();
-        List<Event> events = (List<Event>) eventDao.findAll();
-        String jsonInString = null;
-        try {
-            jsonInString = mapper.writeValueAsString(events);
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-        return jsonInString;
+    public Iterable<Event> getAllEvents() {
+       return eventDao.findAll();
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
@@ -41,23 +34,20 @@ public class EventController {
 
     @RequestMapping(value = "/details", method = RequestMethod.GET)
     @ResponseBody
-    public String getDetails(){
-        ObjectMapper mapper = new ObjectMapper();
+    public String getDetails() {
         Event event = new Event();
         event.setDetails("Event.");
-        String jsonInString = null;
-        try {
-            jsonInString = mapper.writeValueAsString(event.getDetails());
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-        return jsonInString;
+        return event.getDetails();
     }
-//
-//    @RequestMapping(value = "/{id}")
-//    public void delete(@PathVariable Integer id){
-//        Event event = new Event(id);
-//        this.eventService.delete(event);
-//    }
+
+    @RequestMapping(value = "/{id}")
+    public Event getById(@PathVariable Long id){
+        return this.eventDao.findOne(id);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable Long id){
+        this.eventDao.delete(id);
+    }
 
 }
