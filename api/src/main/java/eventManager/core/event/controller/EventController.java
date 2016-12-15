@@ -3,6 +3,7 @@ package eventManager.core.event.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import eventManager.core.event.dao.EventDao;
 import eventManager.core.event.model.Event;
+import eventManager.core.topic.model.Topic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,13 +41,18 @@ public class EventController {
         return event.getDetails();
     }
 
+    @RequestMapping(value = "/addTopicName", method = RequestMethod.POST)
+    public void addTopicName(@RequestBody Long idEvent, String topicName){
+        this.eventDao.findOne(idEvent).setDetails(topicName);
+    }
+
     @RequestMapping(value = "/{id}")
-    public Event getById(@PathVariable Long id){
+    public Event getById(@RequestBody Long id){
         return this.eventDao.findOne(id);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable Long id){
+    public void delete(@RequestBody Long id){
         this.eventDao.delete(id);
     }
 
