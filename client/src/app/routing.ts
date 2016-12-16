@@ -8,14 +8,13 @@ import {EventDetailsComponent} from "./event/event-details/event-details.compone
 
 
 export const routes: Routes = [
-  {path: '', redirectTo: '/api/events/all', pathMatch: 'full'},
-  { path: 'api/events/all', component: EventsComponent },
+  {path: '', redirectTo: '/events/all', pathMatch: 'full'},
+  { path: 'events/all', component: EventsComponent },
   { path: 'topics', component: TopicComponent },
 
-  {path: 'api/events/create', component: AddEventComponent},
+  {path: 'events/create', component: AddEventComponent},
   // {path: 'event-search', component: EventSearchComponent},
-  {path: 'events/:id', component: EventDetailsComponent}
-
+  {path: 'events/details/:id', component: EventDetailsComponent}
 ];
 
 @NgModule({

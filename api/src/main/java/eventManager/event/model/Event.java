@@ -16,7 +16,7 @@ public class Event {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
+    Long id;
 
     @Column(name = "name")
     String name;
@@ -34,7 +34,7 @@ public class Event {
 
     public Event(){}
 
-    public Event(Integer id){
+    public Event(Long id){
         this.id = id;
     }
 
@@ -47,7 +47,7 @@ public class Event {
         this.name=name;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -55,7 +55,7 @@ public class Event {
         return name;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

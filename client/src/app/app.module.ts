@@ -21,8 +21,7 @@ import {TopicService} from "./service/topic-service";
     EventsComponent,
     TopicComponent,
     EventDetailsComponent,
-    AddEventComponent,
-    EventDetailsComponent
+    AddEventComponent
     // EventSearchComponent
   ],
   imports: [

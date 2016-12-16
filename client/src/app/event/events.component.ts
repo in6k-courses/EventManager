@@ -2,6 +2,8 @@ import {Component, OnInit, Input} from "@angular/core";
 import {EventService} from "../service/event-service.component";
 import {Event} from "./model/event";
 import {Router} from "@angular/router";
+import {EventDetailsComponent} from "./event-details/event-details.component";
+import {AddEventComponent} from "./add-event/add-event.component";
 
 @Component({
   selector: 'events',
@@ -9,10 +11,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./events.component.css']
 })
 
-export class EventsComponent {
-
+export class EventsComponent implements OnInit{
    events: Event[];
-   event: Event;
 
   constructor(private service: EventService,
   private router: Router){}
@@ -25,9 +25,5 @@ export class EventsComponent {
 
   ngOnInit(){
     this.getAllEvents();
-  }
-
-  goToDetails(event: Event): void {
-    this.router.navigate(['/events', event.id]);
   }
 }

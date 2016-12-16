@@ -22,13 +22,21 @@ public class EventController {
        return eventDao.findAll();
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public Event getById(@PathVariable Long id){
+        return this.eventDao.findOne(id);
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @ResponseBody
     public Event addEvent(@RequestBody Event event){
         return this.eventDao.save(event);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void getById(@PathVariable("id") Long id){
+    @ResponseBody
+    public void deleteEvent(@PathVariable("id") Long id){
         eventDao.delete(id);
     }
 }

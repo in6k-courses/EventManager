@@ -18,12 +18,12 @@ public class Topic {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
 
-    public Topic(int id, String name) {
+    public Topic(Long id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -34,7 +34,7 @@ public class Topic {
 
     public Topic(){}
 
-    public void setId(int listId) {
+    public void setId(Long listId) {
         this.id = listId;
     }
 
@@ -42,7 +42,7 @@ public class Topic {
         this.name = name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
