@@ -27,24 +27,6 @@ export class EventsComponent {
     this.getAllEvents();
   }
 
-
-  // private addEvent(name: string): void {
-  //  name = name.trim();
-  //  if (!name){return; }
-  //  this.service.addEvent(name)
-  //    .then(event => {
-  //      this.events.push(event);
-  //    });
-  // }
-
-  delete(event:Event):void {
-    this.service
-      .deleteEvent(event.id)
-      .then(()=>{
-      this.events= this.events.filter(h => h !== event);
-      });
-  }
-
   goToDetails(event: Event): void {
     this.router.navigate(['/events', event.id]);
   }

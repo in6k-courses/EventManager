@@ -1,0 +1,16 @@
+<div class="col-sm-offset-4 ">
+  <h2>New event</h2>
+  <form>
+  <label>Event name:</label>
+  <input  class="input" type="text"  placeholder="Enter event name"  #name required class="form-control">
+  <!--(keyup.enter)="create(nameInput.value);-->
+  <!--nameInput.value = ''"-->
+  <label>Details: </label>
+  <input type="text" #details required class="form-control">
+    <button (click)="addEvent(name.value, details.value); $event.stopPropagation()"
+            type="submit" class="glyphicon glyphicon-plus-sign btn btn-primary">Add
+    </button>
+    <button (click)="goBack()" type="submit" type="button" class="btn btn-warning">Go back
+    </button>
+  </form>
+</div>

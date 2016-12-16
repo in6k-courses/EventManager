@@ -8,9 +8,9 @@ import {toPromise} from "rxjs/operator/toPromise";
 
 @Injectable()
 export class EventService {
-  private apiUrl = 'api/events/all';
+  private apiUrl = '/api/events/all';
   private savedEventUrl = 'api/events/create';
-  private detailsUrl = 'api/events/details';
+  private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http:Http){}
 
@@ -21,9 +21,9 @@ export class EventService {
       .catch(this.handleError);
   }
 
-  addEvent(name: string, details: string, topicId: number): Promise<Event>{
+  addEvent(name: string, details: string): Promise<Event>{
     return this.http
-      .post(this.savedEventUrl, JSON.stringify({name: name, details: details, topic: topicId}))
+      .post(this.savedEventUrl, JSON.stringify({name: name, details: details}), {headers: this.headers})
       .toPromise()
       .then(res => res.json())
       .catch(this.handleError);
@@ -35,7 +35,7 @@ export class EventService {
   }
 
   deleteEvent(id: number): Promise<void>{
-    return this.http.delete(this.apiUrl+id)
+    return this.http.delete((this.apiUrl+id), {headers: this.headers})
       .toPromise()
       .then(()=>null)
       .catch(this.handleError);

@@ -1,14 +1,4 @@
-<div class="col-sm-offset-4 ">
-  <label>Event name:</label>
-  <input  class="input" type="text" name="name" placeholder="Enter event name" #nameInput>
-  <!--(keyup.enter)="create(nameInput.value);-->
-  <!--nameInput.value = ''"-->
 
-  <button type="button" class="glyphicon glyphicon-plus-sign btn btn-primary"
-          (click)="addEvent(nameInput.value); nameInput.value=''">
-    Add
-  </button>
-</div>
 <br>
 <table class="table col-sm-offset-4">
   <tbody>
@@ -16,16 +6,12 @@
     <div class="rowinline">
       <div class= "cfset-0 col-sm-3">
         <div  *ngFor = "let event of events">
-          <div class="list-group">
+          <a (click)="goToDetails(event)">
+            <div class="list-group">
             <div class="list-group-item">
-            <th scope="row">
-              <a (click)="goToDetails(event)">
-                {{event.name}}
-              </a>
-            </th>
-            <td>{{event.details}}</td>
+                  {{event.name}}
             </div>
-          </div>
+          </div></a>
         </div>
       </div>
     </div>

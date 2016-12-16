@@ -1,35 +1,25 @@
-<!--<div class="container">-->
-  <!--<div class="row">-->
-    <!--<div class="col-md-offset-1 col-md-4">-->
-      <!--<h4>-->
-        <!--<div *ngIf="events.length > 0">-->
-          <!--<div id="events">-->
-            <!--<div class="events item underline" *ngFor="let event of events">-->
-              <!--{{event.name}}-->
-               <!--<button class="glyphicon glyphicon-remove-circle" (click)="deleteEvent(titleInput.value)">-->
-            <!--</button>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</h4>-->
-    <!--</div>-->
-    <!--<br>-->
-  <!--</div>-->
-<!--</div>-->
+<div class="row">
+  <div class="col-md-offset-1 col-md-4">
+    <h4>
+      <div *ngIf="event">
+        <h2>
+          << &nbsp;{{event.name}} &nbsp;>>
 
-  <div class="row">
-    <div class="col-md-offset-1 col-md-4">
-      <h4>
-       <div *ngIf="event">
-         <h2>
-           {{event.name}}
-           <!--details!-->
-         </h2>
-       </div>
-      </h4>
-
-      <input [(ngModel)]="event.name" placeholder="name"/>
-    </div>
-    <button (click)="goBack()">Back</button>
-    <br>
+        </h2>
+        <div *ngFor="let topics of event.topics">
+        Topic: {{topics.name}}
+        </div>
+        <div *ngFor="let details of event.details">
+        Info: {{event.details}}
+        </div>
+      </div>
+    </h4>
+<add-event></add-event>
+    <div [(ngModel)]="event.name">{{event.name}}</div>
   </div>
+  <button type="button" class="btn btn-danger"
+          (click)="delete(event); $event.stopPropagation()">Delete
+  </button>
+  <button (click)="goBack()">Back</button>
+  <br>
+</div>

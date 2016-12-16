@@ -5,13 +5,15 @@ import { Location }               from '@angular/common';
 
 import {Event} from "../model/event";
 import {EventService} from "../../service/event-service.component";
+import {EventsComponent} from "../events.component";
 
 @Component({
   selector: 'event-details',
-  templateUrl: 'event-details.component.html'
+  templateUrl: './event-details.component.html'
 })
 
-export class EventDetailsComponent {
+export class EventDetailsComponent implements OnInit{
+  events: Event[];
   event: Event;
 
   constructor(
@@ -25,11 +27,14 @@ export class EventDetailsComponent {
         .switchMap((params: Params) => this.eventService.getById(+params['id']))
         .subscribe(event => this.event = event);
   }
-  // save(): void {
-  //   this.eventService.update(this.event)
-  //     .then(bookService => this.goBack());
-  // }
 
+  delete(event:Event):void {
+    this.eventService
+      .deleteEvent(event.id)
+      .then(()=>{
+        this.events = this.events.filter(h => h !== event);
+      });
+  }
   goBack(): void {
     this.location.back();
   }
