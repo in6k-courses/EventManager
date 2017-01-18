@@ -1,0 +1,10 @@
+<div class="row" *ngIf="event">
+  <div class="col-md-offset-1 col-md-4">
+    <h2>{{event.name}}</h2>
+    Info: {{event.details}}
+    <div *ngFor="let topics of event.topics">
+      Topic: {{topics.name}}
+    </div>
+  </div>
+  <button type="button" class="btn btn-danger" (click)="delete(event)">Delete</button>
+</div>

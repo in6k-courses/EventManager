@@ -1,0 +1,30 @@
+.col-sm-10 {
+  border: solid 1px #ededed;
+}
+
+.col-sm-12 {
+  border: solid 1px #ededed;
+}
+.placeholder {
+  padding: 5px;
+}
+.input {
+  margin: 8px;
+  width: 500px;
+  margin-left: 150px;
+}
+
+#events .item {
+  display: flex;
+  align-items: center;
+}
+
+#events .completed {
+  text-decoration: line-through;
+}
+
+.underline {
+
+  margin-top: 7px;
+  border-bottom: solid 1px #ededed;
+}

@@ -1,0 +1,10 @@
+#navbar-toggle-cbox {
+  display:none
+}
+#navbar-toggle-cbox:checked ~ .collapse {
+  display: block;
+}
+.active-link {
+
+  background-color: #e3f2fd;
+}

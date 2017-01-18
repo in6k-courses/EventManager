@@ -1,0 +1,12 @@
+<html>
+<head>
+</head>
+<body>
+<label> Events  </label>
+<button (click)="getAllEvents()">get</button>
+<div  *ngFor = "let event of events">
+  {{vent.name}}&nbsp;
+  &nbsp;{{event.id}}
+</div>
+</body>
+</html>
